@@ -25,20 +25,42 @@ public class MainActivity extends AppCompatActivity {
     private Button minus;
     private Button multiply;
     private Button divide;
+    private String digits = "0";
+    private String operator = "*";
     private TextView calculationZone;
-    private static final String TAG = "debug_tag";
+    private double mNum1 = 0;
+    private double mNum2 = 0;
+    private static final String CURRENT_VALUE = "The current value displayed in calculationZone";
+    private static final String DEBUG_TAG = "heck";
+    private static final String NUM_ONE_VALUE = "Value of mNum1";
+    private static final String NUM_TWO_VALUE = "Value of mNum2";
+    private static final String OPERATOR_VALUE = "Value of operator";
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
+        Log.d(DEBUG_TAG, "1");
         super.onCreate(savedInstanceState);
+        Log.d(DEBUG_TAG, "2");
+
+        if (savedInstanceState != null) {
+            Log.d(DEBUG_TAG, "3");
+            digits = savedInstanceState.getString(CURRENT_VALUE, "0");
+            mNum1 = savedInstanceState.getDouble(NUM_ONE_VALUE, 0);
+            mNum2 = savedInstanceState.getDouble(NUM_TWO_VALUE, 0);
+            operator = savedInstanceState.getString(OPERATOR_VALUE, "*");
+
+            Log.d(DEBUG_TAG, "4");
+
+        }
         setContentView(R.layout.activity_main);
+
 
         final CalcString calculator = new CalcString("0");
 
 
         calculationZone = (TextView) findViewById(R.id.calculation_zone);
 
-        calculationZone.setText(calculator.word);
+        calculationZone.setText(digits);
 
         one = (Button) findViewById(R.id.one_button);
         one.setOnClickListener(new View.OnClickListener() {
@@ -143,40 +165,41 @@ public class MainActivity extends AppCompatActivity {
         equal.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (calculator.operator.equals("/")) {
-                    calculator.num2 = Double.parseDouble(calculator.word);
-                    calculator.result = (calculator.num1 / calculator.num2);
-                    calculationZone.setText(String.valueOf(calculator.result));
-                    calculator.setWord("0");
-                    calculator.num1 = 0;
-                    calculator.num2 = 0;
+                mNum2 = Double.parseDouble(calculationZone.getText().toString());
+                if (operator.equals("/")) {
+                    calculator.result = (mNum1 / mNum2);
+
+
+
+
                 }
-                if (calculator.operator.equals("*")) {
-                    calculator.num2 = Double.parseDouble(calculator.word);
-                    calculator.result = (calculator.num1 * calculator.num2);
-                    calculationZone.setText(String.valueOf(calculator.result));
-                    calculator.setWord("0");
-                    calculator.num1 = 0;
-                    calculator.num2 = 0;
+                if (operator.equals("*")) {
+                    calculator.result = (mNum1 * mNum2);
+
+
+
+
                 }
 
-                if (calculator.operator.equals("-")) {
-                    calculator.num2 = Double.parseDouble(calculator.word);
-                    calculator.result = (calculator.num1 - calculator.num2);
-                    calculationZone.setText(String.valueOf(calculator.result));
-                    calculator.setWord("0");
-                    calculator.num1 = 0;
-                    calculator.num2 = 0;
+                if (operator.equals("-")) {
+                    calculator.result = (mNum1 - mNum2);
+
+
+
+
                 }
 
-                if (calculator.operator.equals("+")) {
-                    calculator.num2 = Double.parseDouble(calculator.word);
-                    calculator.result = (calculator.num1 + calculator.num2);
-                    calculationZone.setText(String.valueOf(calculator.result));
-                    calculator.setWord("0");
-                    calculator.num1 = 0;
-                    calculator.num2 = 0;
+                if (operator.equals("+")) {
+                    calculator.result = (mNum1 + mNum2);
+
+
+
+
                 }
+                calculationZone.setText(String.valueOf(calculator.result));
+                mNum1 = calculator.result;
+                calculator.setWord("0");
+                digits = "0";
             }
         });
 
@@ -184,9 +207,9 @@ public class MainActivity extends AppCompatActivity {
         multiply.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculator.num1 = Double.parseDouble(calculator.word);
+                mNum1 = Double.parseDouble(calculationZone.getText().toString());
                 calculator.setWord("0");
-                calculator.operatorIsPressed("*");
+                operator = "*";
             }
         });
 
@@ -194,9 +217,9 @@ public class MainActivity extends AppCompatActivity {
         divide.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculator.num1 = Double.parseDouble(calculator.word);
+                mNum1 = Double.parseDouble(calculationZone.getText().toString());
                 calculator.setWord("0");
-                calculator.operatorIsPressed("/");
+                operator = "/";
             }
         });
 
@@ -204,9 +227,9 @@ public class MainActivity extends AppCompatActivity {
         plus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculator.num1 = Double.parseDouble(calculator.word);
+                mNum1 = Double.parseDouble(calculationZone.getText().toString());
                 calculator.setWord("0");
-                calculator.operatorIsPressed("+");
+                operator = "+";
             }
         });
 
@@ -214,10 +237,44 @@ public class MainActivity extends AppCompatActivity {
         minus.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                calculator.num1 = Double.parseDouble(calculator.word);
+                mNum1 = Double.parseDouble(calculationZone.getText().toString());
                 calculator.setWord("0");
-                calculator.operatorIsPressed("-");
+                operator = "-";
             }
         });
     }
+
+    @Override
+    public void onSaveInstanceState (Bundle savedInstanceState) {
+        super.onSaveInstanceState(savedInstanceState);
+        Log.d(DEBUG_TAG, calculationZone.getText().toString());
+        savedInstanceState.putString(CURRENT_VALUE, calculationZone.getText().toString());
+        savedInstanceState.putDouble(NUM_ONE_VALUE, mNum1);
+        savedInstanceState.putDouble(NUM_TWO_VALUE, mNum2);
+        savedInstanceState.putString(OPERATOR_VALUE, operator);
+
+
+    }
+
+    public void onStart() {
+        super.onStart();
+    }
+
+    public void onPause() {
+        super.onPause();
+    }
+
+    public void onResume() {
+        super.onResume();
+    }
+
+    public void onStop() {
+        super.onStop();
+    }
+
+    public void onDestroy() {
+        super.onDestroy();
+
+    }
+
 }
