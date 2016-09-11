@@ -15,3 +15,4 @@ Added all buttons to portrait layout.
 Made all information be saved upon rotation.
 Calculations can now be made upon the result of the previous calculation.
 Adjusted xml so entire keypad can be uniformly moved by adjusting the "1" button.
+
