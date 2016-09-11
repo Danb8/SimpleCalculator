@@ -9,6 +9,7 @@ The following changes to make this app better may or may not be coming in the fu
 more buttons (constants, square root, etc... maybe moving it towards a scientific calculator), etc.
 
 sept 9/2016 - version 1.0
+
 Removed a lot of unnecessary code.
 Added all buttons to portrait layout.
 Made all information be saved upon rotation.
