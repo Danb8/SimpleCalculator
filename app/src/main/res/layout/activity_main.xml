@@ -10,13 +10,6 @@
     android:paddingTop="@dimen/activity_vertical_margin"
     tools:context="chief.simplecalculator.MainActivity">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/calculation_zone"
-        android:layout_centerHorizontal="true"
-        android:layout_alignParentTop="true"
-        android:layout_margin="30dp"/>
 
    <Button
         android:id="@+id/one_button"
@@ -24,8 +17,8 @@
         android:layout_height="wrap_content"
         android:padding="2dp"
         android:text="@string/one"
-        android:layout_centerVertical="true"
-        android:layout_marginLeft="40dp"/>
+        android:layout_marginTop="250dp"
+        android:layout_marginLeft="10dp"/>
 
     <Button
         android:id="@+id/two_button"
@@ -34,7 +27,7 @@
         android:padding="2dp"
         android:text="@string/two"
         android:layout_toRightOf="@id/one_button"
-        android:layout_centerVertical="true"/>
+        android:layout_alignBottom="@id/one_button"/>
 
     <Button
         android:id="@+id/three_button"
@@ -43,7 +36,7 @@
         android:padding="2dp"
         android:text="@string/three"
         android:layout_toRightOf="@id/two_button"
-        android:layout_centerVertical="true"/>
+        android:layout_alignBottom="@id/one_button"/>
 
     <Button
         android:id="@+id/four_button"
@@ -52,7 +45,7 @@
         android:padding="2dp"
         android:text="@string/four"
         android:layout_below="@id/one_button"
-        android:layout_marginLeft="40dp"/>
+        android:layout_alignLeft="@id/one_button"/>
 
     <Button
         android:id="@+id/five_button"
@@ -80,7 +73,7 @@
         android:padding="2dp"
         android:text="@string/seven"
         android:layout_below="@+id/four_button"
-        android:layout_marginLeft="40dp"/>
+        android:layout_alignLeft="@id/one_button"/>
 
     <Button
         android:id="@+id/eight_button"
@@ -107,7 +100,7 @@
         android:padding="2dp"
         android:text="@string/zero"
         android:layout_below="@+id/eight_button"
-        android:layout_marginLeft="40dp"/>
+        android:layout_alignLeft="@id/one_button"/>
 
     <Button
         android:id="@+id/decimal_button"
@@ -127,6 +120,49 @@
         android:layout_toRightOf="@id/decimal_button"
         android:layout_below="@id/eight_button"/>
 
+    <Button
+        android:id="@+id/plus_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="@string/plus"
+        android:layout_alignBottom="@id/one_button"
+        android:layout_toRightOf="@id/three_button"/>
+
+    <Button
+        android:id="@+id/minus_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:padding="2dp"
+        android:text="@string/minus"
+        android:layout_toRightOf="@id/six_button"
+        android:layout_alignBottom="@id/four_button"/>
+
+    <Button
+        android:id="@+id/multiply_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/seven_button"
+        android:layout_toRightOf="@id/nine_button"
+        android:text="@string/multiply"/>
+
+    <Button
+        android:id="@+id/divide_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@id/zero_button"
+        android:layout_toRightOf="@id/equal_button"
+        android:padding="2dp"
+        android:text="@string/divide"/>
+
+   <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/calculation_zone"
+        android:padding="5dp"
+        android:layout_centerHorizontal="true"
+        android:layout_alignParentTop="true"
+        android:layout_margin="30dp"/>
 
 
 

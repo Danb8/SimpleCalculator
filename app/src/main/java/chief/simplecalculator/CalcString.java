@@ -5,9 +5,7 @@ package chief.simplecalculator;
  */
 public class CalcString {
     String word = "0";
-    double num1 = 0;
-    double num2 = 1;
-    String operator = "*";
+
     double result;
     CalcString(String word) {
         this.word = word;
@@ -29,8 +27,6 @@ public class CalcString {
         this.word = word;
     }
 
-    public String operatorIsPressed(String j) {
-        return operator = j;
-    }
+
 
 }
