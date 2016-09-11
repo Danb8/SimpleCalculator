@@ -12,7 +12,8 @@ sept 9/2016 - version 1.0
 
 Removed a lot of unnecessary code.
 Added all buttons to portrait layout.
-Made all information be saved upon rotation.
+All information now saves upon rotation.
 Calculations can now be made upon the result of the previous calculation.
 Adjusted xml so entire keypad can be uniformly moved by adjusting the "1" button.
+
 
